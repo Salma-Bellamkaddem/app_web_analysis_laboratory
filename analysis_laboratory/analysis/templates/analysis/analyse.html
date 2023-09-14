@@ -1,0 +1,101 @@
+{%  extends 'analysis/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="home-section">
+
+ 
+ <!-- Page Wrapper -->
+ <div id="wrapper">
+  
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+
+              <!-- DataTales Example -->
+              <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">DataTables Analysis</h6>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                  <tr>
+                                     
+                                      <th> location</th>
+                                      <th  > product</th>
+                                      <th  >type_produit</th>
+                                      <th> type_analyse</th>
+                                      <th>  status</th>
+                                        <th>  heure_analyse</th>
+                                      
+                                      <th  class="table-primary">resultat</th>
+                                      <th > laborantins</th>
+                                  </tr>
+                              </thead>
+                              <tfoot>
+                                  <tr>
+                                     
+                                      <th> location</th>
+                                      <th> product</th>
+                                      <th>type_produit</th>
+                                      <th> type_analyse</th>
+                                      <th> status</th>
+                                        <th>  heure_analyse</th>
+                                       
+                                      <th  class="table-primary">resultat</th>
+                                      <th>laborantins</th>
+                                  </tr>
+                              </tfoot>
+                              <tbody>
+                                  
+                              
+                                
+                                    {% for i in   analyse %}
+
+                                    <tr>
+                                  
+                                    
+                                      <td>{{i.location}}</td>
+                                      <td>{{i.product_name}}</td>
+                                      <td>{{i.type_produit}}</td>
+                                      <td>{{i.type_analyse}}</td>
+                                      <td>{{i.status}}</td>
+                                      <td>{{i.date_created |time:"H:i"}}</td>
+                                      <td  class="table-primary">{{i.resultat}}</td>
+                                      <td  > {{i.laborantins}}</td>
+                                   
+                                  </tr>
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+
+
+
+
+               
+          </div>
+
+
+          <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+     
+      <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+</div> 
+
+</section>
+
+{%  endblock %}
+
