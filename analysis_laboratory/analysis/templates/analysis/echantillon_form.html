@@ -1,0 +1,126 @@
+{%  extends 'Analysis/main.html' %}
+{% block content %}
+{% load static %}
+<section class="home-section">
+{% comment %} <main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'home' %}"><i class="fas fa-angle-left"></i></a>
+            <br>
+
+            <form class="form" method="POST" action="" enctype="multipart/form-data">
+                {%  csrf_token %} 
+                {% for field in form  %}
+            
+                <!-- Input:Text -->
+                <div class="form__field">
+                    <label for="formInput#text">{{field.label}} </label>
+                    {{field}}
+                </div>
+               {%endfor%}
+               
+
+                
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</main> {% endcomment %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Form</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            </ol>
+        </div>
+
+
+
+<div class="col-xl-6 col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Echantillons</h4>
+        </div>
+        <div class="card-body">
+            <div class="basic-form">
+                <form   class="form" method="POST" action="" enctype="multipart/form-data" >
+                    {%  csrf_token %} 
+                {% for field in form  %}
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label"  for="formInput#text">{{field.label}}</label>
+                        <div class="  
+                    col-sm-9" >
+                            {% comment %} {{field}} {% endcomment %}
+                            <input class="form-control">
+                        </div>
+                    </div>
+                    {%endfor%}
+                   
+                    <div class="mb-3 row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary"  value="Submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<style> 
+    .breadcrumb {
+    display: -ms-flexbox;
+    display: -webkit-inline-box;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 1.75rem 33rem;
+    margin-bottom: 2rem;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 28.25rem;
+    flex-direction: row;
+    align-content: baseline;
+}</style>
+
+
+
+
+{% endblock content %}
+
+{% comment %} 
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+			<form action="" method="POST">
+            	{% csrf_token %}
+				{% for field in form %}
+					{{field.label}}
+					{{field}}
+				
+				{% endfor %}
+				<hr>
+				<input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+			</form>
+		</div>
+	</div> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Main Section -->
+ 

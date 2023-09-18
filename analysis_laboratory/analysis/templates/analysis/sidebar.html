@@ -14,7 +14,7 @@
          <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="#">
+        <a href="{%  url  'home' %}">
           <i class="bx bx-grid-alt"></i>
           <span class="link_name">Dashboard</span>
         </a>
@@ -35,7 +35,7 @@
         <span class="tooltip">Message</span>
       </li>
       <li>
-        <a href="#">
+        <a href="{% url 'analyse' %}">
           <i class="bx bx-pie-chart-alt-2"></i>
           <span class="link_name">Analytics</span>
         </a>
@@ -48,13 +48,13 @@
         </a>
         <span class="tooltip">File Manger</span>
       </li>
-      <li>
+      {% comment %} <li>
         <a href="#">
           <i class="bx bx-cart-alt"></i>
           <span class="link_name">Order</span>
         </a>
         <span class="tooltip">Order</span>
-      </li>
+      </li> {% endcomment %}
       <li>
         <a href="#">
           <i class="bx bx-cog"></i>

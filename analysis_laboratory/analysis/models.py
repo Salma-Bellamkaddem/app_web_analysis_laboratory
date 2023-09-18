@@ -1,5 +1,6 @@
 
 from django.db import models
+from django.db.models import Avg
 
 
 # Create your models here.
@@ -14,7 +15,7 @@ class Laboratoire(models.Model):
 
     def __str__(self):
         return self.lab_name
-
+   
 
 class Laborantins(models.Model):
     lab = models.ForeignKey(Laboratoire, on_delete=models.CASCADE)
@@ -112,6 +113,10 @@ class ProductAnalyse(models.Model):
     def __str__(self):
         return f"      {self.product_name} -  {self.type_produit} -   {self.type_analyse} -  {self.laborantins} - Résultat : {self.resultat}"
 
+    def moyenne_par_type_analyse(self):
+        return ProductAnalyse.objects.filter(type_analyse=self.type_analyse).aggregate(moyenne=Avg('resultat'))['moyenne']
+
+
 
 class Notif(models.Model):
     laborantins = models.ForeignKey('Laborantins', on_delete=models.CASCADE)
@@ -171,3 +176,11 @@ class History(models.Model):
         verbose_name_plural = "Historiques d'Analyse"
 
 
+class MoyenneAnalyse(models.Model):
+    type_produit = models.ForeignKey(TypeProduit, on_delete=models.CASCADE)
+    type_analyse = models.ForeignKey(TypeAnalyse, on_delete=models.CASCADE)
+    moyenne = models.DecimalField(max_digits=10, decimal_places=2)
+    date = models.DateField()
+
+    def __str__(self):
+        return f"{self.type_produit} - {self.type_analyse} - Moyenne : {self.moyenne} ({self.date})"

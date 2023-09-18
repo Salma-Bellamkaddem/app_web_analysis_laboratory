@@ -31,20 +31,22 @@
             <h5>Laboratins: </h5>
             <hr>
             <div class="card card-body">
-                <a class="btn btn-primary  btn-sm btn-block" href="">Create laboratins</a>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url  'createlaboratins' %}">Create laboratins</a>
                 <table class="table table-sm">
                     <tr>
                         <th></th>
+                        <th> Matricule</th>
                         <th>Name</th>
                         <th>Phone</th>
-                        <th>Skills</th>
+                        
                     </tr>
-                    {% for laborantins in   laboratinss %}
+                    {% for laboratins in   laboratinss %}
                         <tr>
-                            <td><a href="" class="btn btn-sm btn-info">View</a></td>
-                            <td>{{laborantins.first_name}}  {{laborantins.last_name}}</td>
-                            <td>{{laborantins.telephone}}</td>
-                            <td>{{laborantins.skills }}</td>
+                            <td><a  class="btn btn-sm btn-info" href="{% url 'laboratins'   laboratins.id %}">View</a></td>
+                                <td>{{laboratins.matricule}} </td>
+                            <td>{{laboratins.first_name}}  {{laboratins.last_name}}</td>
+                            <td>{{laboratins.telephone}}</td>
+                            
                         </tr>
                     {% endfor %}
                 </table>
@@ -55,20 +57,24 @@
             <h5>LAST 5 Analyse</h5>
             <hr>
             <div class="card card-body">
-                <a class="btn btn-primary  btn-sm btn-block" href="">Create Order</a>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url  'createchantillon' %}">Create Produit</a>
                 <table class="table table-sm">
                     <tr>
-                        <th>Product</th>
-                        <th>Date Orderd</th>
-                        <th>Status</th>
-                        <th>Update</th>
-                        <th>Remove</th>
+                        <th>Echantillon</th>
+                        <th>Laboratoire </th>
+                        <th>Product name</th>
+                       
+                        <th>Date create</th>
+                       
                     </tr>
-                    {% for order in orders %}
+                    {% for Product in  Engrais %}
                         <tr>
-                            <td>{{order.product}}</td>
-                            <td>{{order.date_created}}</td>
-                            <td>{{order.status}}</td>
+                            <td>{{Product.echantillon}}</td>
+                            <td>{{Product.laboratoire}}</td>
+                            <td>{{Product.product_name}}</td>
+                          
+                            <td>{{Product.date_created  }}</td>
+
                             <td><a class="btn btn-sm btn-warning" href="">Update</a></td>
                             <td><a class="btn btn-sm btn-danger" href="">Cancel</a></td>
                         </tr>
@@ -82,6 +88,31 @@
 
 
    <hr>
+   <div class="container">
+    <h1 class="mt-5">Résumé des Derniers Résultats d'Analyse</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Échantillon</th>
+                <th>Type d'Analyse</th>
+                <th>Produit d'Engrais</th>
+                <th>Date d'Analyse</th>
+                <th>Valeur Mesurée</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultat in resultat %}
+            <tr>
+                <td>{{ resultat.echantillon }}</td>
+                <td>{{ resultat.type_analyse }}</td>
+                <td>{{ resultat.produit_angrais }}</td>
+                <td>{{ resultat.date_analyse|date:"Y-m-d H:i:s" }}</td>
+                <td>{{ resultat.valeur_mesuree }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
    <br><br>
 
@@ -163,6 +194,37 @@
         </div>
     </div> 
 
+
+    <hr>
+    <br><br><br>
+    {% comment %} <table>
+        <thead>
+            <tr>
+                <th>Type de Produit</th>
+                <th>Type d'Analyse</th>
+                <th>Moyenne</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for moyenne_analyse in moyennes_analyse %}
+            <tr>
+                <td>{{ moyenne_analyse.type_produit }}</td>
+                <td>{{ moyenne_analyse.type_analyse }}</td>
+                <td>{{ moyenne_analyse.moyenne }}</td>
+                <td>{{ moyenne_analyse.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> {% endcomment %}
+    
+
+    {% comment %} <h1>Analysis Results</h1>
+    <ul>
+        {% for result in   resultat %}
+            <li>{{ result.date_analyzed }} - {{ result.result_value }}</li>
+        {% endfor %}
+    </ul> {% endcomment %}
 
 </section>
 
