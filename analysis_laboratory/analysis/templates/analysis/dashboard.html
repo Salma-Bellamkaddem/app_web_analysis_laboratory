@@ -3,12 +3,7 @@
 {% block content %}
 
 <section class="home-section" >
-   <style>
-    .home-section {
-        position: relative;
-       
-        background-color: #fff;
-   </style>
+   
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     {%  include 'Analysis/status.html' %}
 
@@ -31,7 +26,7 @@
             <h5>Laboratins: </h5>
             <hr>
             <div class="card card-body">
-                <a class="btn btn-primary  btn-sm btn-block" href="{% url  'createlaboratins' %}">Create laboratins</a>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url  'createlaboratins' %}">Create laborantins</a>
                 <table class="table table-sm">
                     <tr>
                         <th></th>
@@ -75,14 +70,14 @@
                           
                             <td>{{Product.date_created  }}</td>
 
-                            <td><a class="btn btn-sm btn-warning" href="">Update</a></td>
-                            <td><a class="btn btn-sm btn-danger" href="">Cancel</a></td>
+                            <td><a class="btn btn-sm btn-warning" href="{% url 'update_Echantillon' Product.id %}">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_Echantillon' Product.id %}">Delete</a></td>
                         </tr>
                     {% endfor %}
                 </table>
             </div>
         </div>
-    
+     
     </div>
 
 

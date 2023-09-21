@@ -30,21 +30,31 @@
 
 
 
-<div class="content-body">
+{% comment %} <div class="content-body">
     <div class="container-fluid">
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Form</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Dashboard</a></li>
             </ol>
-        </div>
-
+        </div> {% endcomment %}
+        {% comment %} .card-title {
+            margin-bottom: -1.25rem;
+        } {% endcomment %}
+        
 
 
 <div class="col-xl-6 col-lg-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Laboratins</h4>
+           
+
+            <h4 class="card-title"   style="font-size: 2.5rem; margin-bottom: 0.5rem;
+            font-weight: 600;
+            padding-left: 71px;
+            line-height: 1.2;
+            margin-bottom: -1.25rem;">Laboratins</h4>
+            <a class="backButton" href="{% url 'home' %}"><i class="fas fa-angle-left" style="font-size: 38px;    line-height: 0; "></i></a>
         </div>
         <div class="card-body">
             <div class="basic-form">
@@ -53,10 +63,9 @@
                 {% for field in form  %}
                     <div class="mb-3 row">
                         <label class="col-sm-3 col-form-label"  for="formInput#text">{{field.label}}</label>
-                        <div class="  
-                    col-sm-9" >
-                            {% comment %} {{field}} {% endcomment %}
-                            <input class="form-control">
+                        <div class=" col-sm-9" >
+                   {{field}} 
+                           
                         </div>
                     </div>
                     {%endfor%}

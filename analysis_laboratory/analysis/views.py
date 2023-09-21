@@ -58,7 +58,7 @@ def laboratins(request, pk_test):
 # def (request):
 #      laboratins=Laborantins.objects.all()
 #      context={'laboratins':laboratins}
-
+#product create update modifier 
 def createchantillon(request):
      form= ProductFomrs()
      if request.method =='POST':
@@ -71,7 +71,31 @@ def createchantillon(request):
      context={'form':form}
      return render (request, 'analysis/echantillon_form.html',context)
 
+def updateEchantillon(request , pk ):
+     Product=ProductEngrais.objects.get(id=pk)
+     form =ProductFomrs(instance=Product)
+     if request.method =='POST':
+          form=ProductFomrs(request.POST , instance=Product)
+          if form.is_valid():
+               form.save()
+               return redirect('/')
+     
+     context={'form':form}
+     return render (request, 'analysis/echantillon_form.html',context)
 
+def deleteEchantillon(request , pk):
+     Product=ProductEngrais.objects.get(id=pk)
+     if request.method == "POST":
+          Product.delete()
+          return redirect('/')
+     context={'item':Product}
+     return render (request , 'analysis/delete.html',context)
+
+
+
+
+
+#laborantins create update modifeir 
 
 def createlaboratins(request):
      form= LaboratinsFomrs()
@@ -85,39 +109,35 @@ def createlaboratins(request):
      context={'form':form}
      return render (request, 'analysis/laboratins_form.html',context)
 
+
+
 def analyse(request):
      analyse = ProductAnalyse.objects.all()
      analyse1 = ProductAnalyse.objects.filter(status='encour')
-     
-
-    
-     
-
      return render (request ,'analysis/list_analyse.html',{'analyse':analyse ,'analyse1':analyse1})
 
-# @receiver(post_save, sender=ProductAnalyse)
-# def calculer_moyenne(sender, instance, **kwargs):
-#     # Calculez la somme et le nombre d'analyses pour le type de produit et le type d'analyse de cette instance
-#     somme_resultat = ProductAnalyse.objects.filter(
-#         type_produit=instance.type_produit,
-#         type_analyse=instance.type_analyse
-#     ).aggregate(sum('resultat'))['resultat__sum']
 
-#     nombre_analyses = ProductAnalyse.objects.filter(
-#         type_produit=instance.type_produit,
-#         type_analyse=instance.type_analyse
-#     ).count()
 
-#     # Calculez la moyenne
-#     if somme_resultat is not None and nombre_analyses > 0:
-#         moyenne = somme_resultat / nombre_analyses
-#     else:
-#         moyenne = 0
 
-#     # Enregistrez la moyenne dans le modèle MoyenneAnalyse
-#     MoyenneAnalyse.objects.create(
-#         type_produit=instance.type_produit,
-#         type_analyse=instance.type_analyse,
-#         moyenne=moyenne,
-#         date=instance.date_created.date()  # Utilisez la date de création de l'instance
-#     )
+
+def createAnalyse(request):
+       context={}
+       return render (request, 'analysis/echantillon_form.html',context)
+
+
+def updateAnalyse(request):
+       context={}
+    
+       return render (request, 'analysis/echantillon_form.html',context)
+
+
+def deleteAnalyse(request):
+      context={}
+    
+      return render (request, 'analysis/analyse.html',context)
+
+
+
+
+
+

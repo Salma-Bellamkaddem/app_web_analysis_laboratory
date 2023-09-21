@@ -12,6 +12,10 @@ class LaboratinsFomrs(ModelForm):
     class Meta:
         model =Laborantins
         fields='__all__'
+
+
+
+
         
     
    
