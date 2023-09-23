@@ -1,0 +1,136 @@
+{%  extends 'Analysis/main.html' %}
+
+{% block content %}
+
+
+ 
+    <!-- Create laborations  -->
+  
+
+
+           
+            <section class="home-section">
+                <div class="container mt-4">
+                    <h1> Echantillon Management</h1>
+                    
+                    <a href="{% url  'create_prelevement' %}" class="btn btn-primary mb-3 custom-btn">
+                        <i class="fas fa-plus"></i> <!-- Icône d'ajout (utilisez la classe Bootstrap pour une icône de plus) -->
+                        New Echantillon
+                    </a>
+             <div class="card card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                          <th> Code</th>
+                          <th>Quantity</th>
+                          <th>Sampling Date</th>
+                          <th>Reception Date</th>
+                         
+                          <th>Location</th>
+                          <th>Laboratory</th>
+                          <th>observation<th>
+                            <th>Update</th>
+                            <th>delete</th>
+                           
+                            
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        {% for echantillon in echantillon %}
+                        <tr>
+                          <td>{{ echantillon.code_echantillon }}</td>
+                          <td>{{ echantillon.quantite }}</td>
+                          <td>{{ echantillon.date_prelevement|date:"d/m/Y"  }}</td>
+                          <td>{{ echantillon.date_reception|date:"d/m/Y"  }}</td>
+                         
+                          <td>{{ echantillon.location }}</td>
+                          <td>{{ echantillon.laboratoire }}</td>
+                           <td>{{ echantillon.observation }}</td>
+                          
+                           
+                           <td></td>
+                           
+
+                        <td><a href="{% url 'update_prelevement'   echantillon.id %}" class="btn btn-warning btn-sm">Edit</a></td> 
+                         <td> <a href="{% url 'delete_prelevement'   echantillon.id %}" class="btn btn-danger btn-sm">Delete</a> </td>
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
+                </table>
+                
+            </div>
+          
+
+
+<!--tableau product -->
+
+            {% comment %} <h5>LAST <strong>{{ total_product}} </strong>Product</h5> {% endcomment %}
+            <hr>
+          
+                
+                <a href="{% url  'createchantillon' %}" class="btn btn-primary mb-3 custom-btn">
+                    <i class="fas fa-plus"></i> <!-- Icône d'ajout (utilisez la classe Bootstrap pour une icône de plus) -->
+                    New Product
+                </a>
+            <div class="card card-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Echantillon</th>
+                        <th>Laboratoire </th>
+                        <th>Product name</th>
+                       <th>description<th>
+                        <th>Date create</th>
+                        <th>Update</th>
+                        <th>delete</th>
+                       
+                    </tr>
+                    {% for Product in  Engrais %}
+                        <tr>
+                            <td>{{Product.echantillon}}</td>
+                            <td>{{Product.laboratoire}}</td>
+                            <td>{{Product.product_name}}</td>
+                            <td>{{Product.description}}</td>
+                            <td></td>
+                          
+                            <td>{{Product.date_created|date:"d/m/Y"    }}</td>
+
+                            <td><a class="btn btn-sm btn-warning" href="{% url 'update_Echantillon' Product.id %}">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_Echantillon' Product.id %}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+
+        </section>
+        {% endblock %}
+        
+
+     
+                    
+
+  
+
+
+
+
+
+
+    <!--create analyse -->
+    <!-- Create analyse -->
+
+
+   
+
+
+
+    
+
+
+
+
+

@@ -54,7 +54,7 @@ class Echantillon(models.Model):
    
 
     def __str__(self):
-        return f"Echantillon {self.code_echantillon}"
+        return f" {self.code_echantillon}"
     
 
 
@@ -92,8 +92,7 @@ class TypeAnalyse(models.Model):
 
 class ProductAnalyse(models.Model):
     num= models.CharField(max_length=50 ,null=True)
-    laborantins = models.ForeignKey(Laborantins, on_delete=models.PROTECT)
-    
+    laborantins = models.ForeignKey(Laborantins, on_delete=models.CASCADE)
     location =models.ForeignKey(Location, on_delete=models.CASCADE)
     product_name=models.ForeignKey( ProductEngrais, on_delete=models.CASCADE)
     type_produit = models.ForeignKey(TypeProduit, on_delete=models.CASCADE)
@@ -111,12 +110,9 @@ class ProductAnalyse(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=ENCOUR)
     
     def __str__(self):
-        return f"      {self.product_name} -  {self.type_produit} -   {self.type_analyse} -  {self.laborantins} - Résultat : {self.resultat}"
+        return f"      {self.num} "
 
-    def moyenne_par_type_analyse(self):
-        return ProductAnalyse.objects.filter(type_analyse=self.type_analyse).aggregate(moyenne=Avg('resultat'))['moyenne']
-
-
+    
 
 class Notif(models.Model):
     laborantins = models.ForeignKey('Laborantins', on_delete=models.CASCADE)

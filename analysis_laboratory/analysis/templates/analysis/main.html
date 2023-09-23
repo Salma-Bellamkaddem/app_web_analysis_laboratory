@@ -34,6 +34,74 @@
 			position: relative;
 		   
 			background-color: #fff;
+
+
+
+
+			
+				.custom-pagination {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					font-size: 15px;
+					color: #333; /* Couleur du texte */
+					background-color: #f5f5f5; /* Couleur d'arrière-plan */
+					padding: 10px;
+					border-radius: 5px;
+				}
+				
+				.custom-pagination .page-info {
+					font-weight: bold;
+				}
+				
+				.custom-pagination .pages {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+				}
+				
+				.custom-pagination .pages li {
+					display: inline-block;
+					margin-right: 5px;
+				}
+				
+				.custom-pagination .pages li a {
+					text-decoration: none;
+					color: #007bff; /* Couleur du lien */
+					background-color: #fff;
+					padding: 11px 26px;
+					border-radius: 3px;
+					transition: background-color 0.3s;
+				}
+				
+				.custom-pagination .pages li.active a {
+					background-color: #007bff;
+					color: #fff;
+				}
+				
+				.custom-pagination .pages li a:hover {
+					background-color: #ddd; /* Couleur au survol */
+				}
+				/* Change the color of pagination text and background */
+				.custom-pagination {
+					color: #254F83 /* Text color */
+					background-color: #EDEDED; /* Background color */
+				}
+				
+				/* Change the color of active and hover links */
+				.custom-pagination .pages li.active a,
+				.custom-pagination .pages li a:hover {
+					color: #FFFFFF; /* Text color for active and hover links */
+					background-color: #254F83; /* Background color for active and hover links */
+				}
+				
+				/* Change the color of non-active links */
+				.custom-pagination .pages li a {
+					color: #254F83; /* Text color for non-active links */
+					background-color: #EDEDED; /* Background color for non-active links */
+				}
+						
+		
 	   </style>
    
 	{%  include 'analysis/navbar.html' %}

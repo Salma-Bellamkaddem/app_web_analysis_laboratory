@@ -18,12 +18,16 @@
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
+
+
+
+    
     <!-- Create laborations  -->
   
 
     <div class="row">
         <div class="col-md-5">
-            <h5>Laboratins: </h5>
+            <h5>Laborantins: </h5>
             <hr>
             <div class="card card-body">
                 <a class="btn btn-primary  btn-sm btn-block" href="{% url  'createlaboratins' %}">Create laborantins</a>
@@ -47,38 +51,99 @@
                 </table>
             </div>
         </div>
+
+     
+                    
+
+
     
         <div class="col-md-7">
-            <h5>LAST 5 Analyse</h5>
+            <h5>LAST <strong>{{ total_analyse}} </strong>Analyse</h5>
             <hr>
             <div class="card card-body">
-                <a class="btn btn-primary  btn-sm btn-block" href="{% url  'createchantillon' %}">Create Produit</a>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url  'createchantillon' %}">Create analyse</a>
                 <table class="table table-sm">
                     <tr>
-                        <th>Echantillon</th>
-                        <th>Laboratoire </th>
-                        <th>Product name</th>
-                       
-                        <th>Date create</th>
+                        
+                    <th> product</th>
+                    <th>type_produit</th>
+                    <th> type_analyse</th>
+                    <th> status</th>
+                    <th>heure_analyse</th>
+                    <th>resultat</th>
+                   
                        
                     </tr>
-                    {% for Product in  Engrais %}
-                        <tr>
-                            <td>{{Product.echantillon}}</td>
-                            <td>{{Product.laboratoire}}</td>
-                            <td>{{Product.product_name}}</td>
-                          
-                            <td>{{Product.date_created  }}</td>
-
-                            <td><a class="btn btn-sm btn-warning" href="{% url 'update_Echantillon' Product.id %}">Update</a></td>
-                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_Echantillon' Product.id %}">Delete</a></td>
-                        </tr>
+                    {% for i in   analyse %}
+                    <tr>
+                  
+                    
+                     
+                      <td>{{i.product_name}}</td>
+                      <td>{{i.type_produit}}</td>
+                      <td>{{i.type_analyse}}</td>
+                      <td>{{i.status}}</td>
+                      <td>{{i.date_created |time:"H"}}  AM</td>
+                      <td  >{{i.resultat}}</td>
+                  
                     {% endfor %}
                 </table>
             </div>
         </div>
      
     </div>
+
+
+
+
+
+
+    <!--create analyse -->
+    <!-- Create analyse -->
+
+
+   
+
+
+
+    
+    <div class="col-md-7">
+         <h5>LAST <strong>{{ total_product}} </strong>Product</h5>
+            <hr>
+        <div class="card card-body">
+            
+            <table class="table table-sm">
+                <tr>
+                    <th>Echantillon</th>
+                    <th>Laboratoire </th>
+                    <th>Product name</th>
+                   
+                    <th>Date create</th>
+                   
+                </tr>
+                {% for Product in  Engrais %}
+                    <tr>
+                        <td>{{Product.echantillon}}</td>
+                        <td>{{Product.laboratoire}}</td>
+                        <td>{{Product.product_name}}</td>
+                      
+                        <td>{{Product.date_created  }}</td>
+
+                        <td><a class="btn btn-sm btn-warning" href="{% url 'update_Echantillon' Product.id %}">Update</a></td>
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_Echantillon' Product.id %}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+ 
+</div>
+
+
+
+    
+
+
 
 
 
