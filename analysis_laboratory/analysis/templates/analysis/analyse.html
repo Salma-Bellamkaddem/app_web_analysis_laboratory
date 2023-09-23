@@ -13,12 +13,13 @@
                 
       
 
-          <form method="get" class="mb-3">
+          <form method="get" class="form-inline">
             {{ myFilter.form.as_p }}
+            
             <button type="submit" class="btn btn-outline-success  ">Search</button>
         </form>
 
-        <a href="{% url  'create_analyse' %}" class="btn btn-primary mb-3 custom-btn">
+        <a href="{% url  'create_analyse'    %}" class="btn btn-primary mb-3 custom-btn">
             <i class="fas fa-plus"></i> <!-- Icône d'ajout (utilisez la classe Bootstrap pour une icône de plus) -->
             New Analysis
         </a>
@@ -53,7 +54,7 @@
                       <td>{{i.type_produit}}</td>
                       <td>{{i.type_analyse}}</td>
                       <td>{{i.status}}</td>
-                      <td>{{i.date_created |time:"H"}}  AM</td>
+                      <td>{{i.date_created |time:"g:i:a"}}  </td>
                       <td  >{{i.resultat}}</td>
                       <td  > {{i.laborantins}}</td>
                   

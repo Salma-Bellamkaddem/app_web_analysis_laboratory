@@ -1,0 +1,67 @@
+{%  extends 'analysis/main.html' %}
+{% block content %}
+<section class="home-section">
+{%  include 'analysis/status.html' %}
+
+           
+
+<div class="row">
+	<div class="col-md">
+	  <div class="card card-body">
+		
+		<a href="{% url  'create_analysis'   %}" class="btn btn-primary mb-3 custom-btn">
+            <i class="fas fa-plus"></i> <!-- Icône d'ajout (utilisez la classe Bootstrap pour une icône de plus) -->
+            New Analysis
+        </a>
+		<div class="table-responsive">
+		<table class="table table-sm ">
+		  <tr>
+		   
+								 
+			  <th> location</th>
+			 
+			  <th>date</th>
+			  <th> product</th>
+			  <th>type_produit</th>
+			  <th> type_analyse</th>
+			 <th>staus</th>
+			  <th>heure_analyse</th>
+			  <th>resultat</th>
+		 
+		   
+			
+		  </tr>
+  
+		  
+  
+		  {% for i in    analysis %}
+
+		  <tr>
+		
+		    
+			<td class="d-none d-sm-table-cell">{{i.location}}</td>
+			
+			<td class="d-none d-sm-table-cell">{{i.date_created|date:"d/m/Y"}}</td>
+			<td class="d-none d-sm-table-cell">{{i.product_name}}</td>
+			<td class="d-none d-sm-table-cell">{{i.type_produit}}</td>
+			<td class="d-none d-sm-table-cell">{{i.type_analyse}}</td>
+			<td class="d-none d-sm-table-cell">{{i.status}}</td>
+			<td class="d-none d-sm-table-cell">{{i.date_created |time:"g:i:a"}}  </td>
+			<td class="d-none d-sm-table-cell"  >{{i.resultat}}</td>
+		 
+		
+		 
+	   
+			
+		  </tr>
+		  {% endfor %}
+  
+		</table>
+	</div>
+		
+	  </div>
+	</div>
+  </div> 
+</div>
+</section>
+{% endblock content %}

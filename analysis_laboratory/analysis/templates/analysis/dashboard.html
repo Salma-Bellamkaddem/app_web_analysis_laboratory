@@ -61,7 +61,7 @@
             <h5>LAST <strong>{{ total_analyse}} </strong>Analyse</h5>
             <hr>
             <div class="card card-body">
-                <a class="btn btn-primary  btn-sm btn-block" href="{% url  'createchantillon' %}">Create analyse</a>
+               
                 <table class="table table-sm">
                     <tr>
                         
@@ -74,7 +74,7 @@
                    
                        
                     </tr>
-                    {% for i in   analyse %}
+                    {% for i in    analyse1 %}
                     <tr>
                   
                     
@@ -83,7 +83,7 @@
                       <td>{{i.type_produit}}</td>
                       <td>{{i.type_analyse}}</td>
                       <td>{{i.status}}</td>
-                      <td>{{i.date_created |time:"H"}}  AM</td>
+                      <td>{{i.date_created |time:"g:i:a"}}  </td>
                       <td  >{{i.resultat}}</td>
                   
                     {% endfor %}
@@ -106,38 +106,6 @@
 
 
 
-    
-    <div class="col-md-7">
-         <h5>LAST <strong>{{ total_product}} </strong>Product</h5>
-            <hr>
-        <div class="card card-body">
-            
-            <table class="table table-sm">
-                <tr>
-                    <th>Echantillon</th>
-                    <th>Laboratoire </th>
-                    <th>Product name</th>
-                   
-                    <th>Date create</th>
-                   
-                </tr>
-                {% for Product in  Engrais %}
-                    <tr>
-                        <td>{{Product.echantillon}}</td>
-                        <td>{{Product.laboratoire}}</td>
-                        <td>{{Product.product_name}}</td>
-                      
-                        <td>{{Product.date_created  }}</td>
-
-                        <td><a class="btn btn-sm btn-warning" href="{% url 'update_Echantillon' Product.id %}">Update</a></td>
-                        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_Echantillon' Product.id %}">Delete</a></td>
-                    </tr>
-                {% endfor %}
-            </table>
-        </div>
-    </div>
- 
-</div>
 
 
 
@@ -147,38 +115,11 @@
 
 
 
-   <hr>
-   <div class="container">
-    <h1 class="mt-5">Résumé des Derniers Résultats d'Analyse</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Échantillon</th>
-                <th>Type d'Analyse</th>
-                <th>Produit d'Engrais</th>
-                <th>Date d'Analyse</th>
-                <th>Valeur Mesurée</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for resultat in resultat %}
-            <tr>
-                <td>{{ resultat.echantillon }}</td>
-                <td>{{ resultat.type_analyse }}</td>
-                <td>{{ resultat.produit_angrais }}</td>
-                <td>{{ resultat.date_analyse|date:"Y-m-d H:i:s" }}</td>
-                <td>{{ resultat.valeur_mesuree }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-   <br><br>
+  
 
     <!-- Content Row -->
 
-     <div class="row">
+     {% comment %} <div class="row">
 
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
@@ -256,7 +197,7 @@
 
 
     <hr>
-    <br><br><br>
+    <br><br><br> {% endcomment %}
     {% comment %} <table>
         <thead>
             <tr>

@@ -1,7 +1,7 @@
 
 from django.db import models
 from django.db.models import Avg
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -18,10 +18,12 @@ class Laboratoire(models.Model):
    
 
 class Laborantins(models.Model):
+    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     lab = models.ForeignKey(Laboratoire, on_delete=models.CASCADE)
     matricule = models.CharField(max_length=50 ,null=True)
     first_name = models.CharField(max_length=100 ,null=True)
     last_name = models.CharField(max_length=100 ,null=True)
+    profile_pic=models.ImageField( default="user-default.png",null=True,blank=True)
     telephone = models.CharField(max_length=20, null=True)
     email = models.EmailField()
     address = models.TextField( )

@@ -26,6 +26,7 @@
             <hr>
             <p>Email    :     {{laboratins.email}} </p>
             <p>Phone    :     {{laboratins.telephone}} </p>
+            <p>Skills    :     {{laboratins.skills}} </p>
           </div>
         </div>
       
@@ -46,7 +47,7 @@
       
          
              
-              <form method="get" >
+              <form method="get"class="form-inline" >
                 {{ myFilter.form.as_p }}
                 <button type="submit" class="btn btn-success  ">Search</button>
             </form>
@@ -93,7 +94,7 @@
                 <td>{{i.type_produit}}</td>
                 <td>{{i.type_analyse}}</td>
                
-                <td>{{i.date_created |time:"H"}}  AM</td>
+                <td>{{i.date_created |time:"g:i:a"}}</td>
                 <td  >{{i.resultat}}</td>
              
             
