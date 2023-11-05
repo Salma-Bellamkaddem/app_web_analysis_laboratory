@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport d'Analyse</title>
+    <style>
+        /* Ajoutez ici votre style CSS personnalisé */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        @page{ size: "A4";
+        margin:2.5cm 1.5cm 3.5cm 1.5cm ;}
+        @top-center{
+            content:"COMPANY NAME";
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 150px;
+        }
+        .date {
+            text-align: right;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img class="logo" src="votre_logo.png" alt="Logo de l'entreprise">
+        <h1>Rapport d'Analyse</h1>
+    </div>
+    <div class="date">
+        <p>Date du rapport : 24 septembre 2023</p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Échantillon</th>
+                <th>Type d'Analyse</th>
+                <th>Résultat</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Échantillon 1</td>
+                <td>Analyse A</td>
+                <td>10.5</td>
+            </tr>
+            <tr>
+                <td>Échantillon 2</td>
+                <td>Analyse B</td>
+                <td>7.2</td>
+            </tr>
+            <!-- Ajoutez ici d'autres lignes pour les analyses -->
+        </tbody>
+    </table>
+</body>
+</html>

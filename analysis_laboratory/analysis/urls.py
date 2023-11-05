@@ -2,11 +2,16 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from django.conf.urls import handler404 ,handler500,handler400
+
+
 
 urlpatterns = [
   path('register/', views.registerPage, name="register"),
   path('login/', views.loginPage, name="login"),  
 	path('logout/', views.logoutUser, name="logout"),
+    path('export-pdf',views.generate_pdf,name="export-pdf"),
+    
 
 
 
@@ -62,7 +67,10 @@ urlpatterns = [
     path('reset_password_complete/', 
         auth_views.PasswordResetCompleteView.as_view(template_name="analysis/password_reset_done.html"), 
         name="password_reset_complete"),
-
-
+    
 
 ] 
+
+handler404 = 'analysis.views.error_404'
+handler500='analysis.views.error_500'
+handler400='analysis.views.error_400'

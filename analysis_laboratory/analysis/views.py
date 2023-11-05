@@ -13,6 +13,10 @@ from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user, allowed_users, admin_only
 from django.contrib.auth.models import Group
 from datetime import datetime
+
+
+
+
 #login register forgetpassword 
 
 
@@ -388,4 +392,133 @@ def deleteAnalyse(request ,pk):
 
 
 
+from io import BytesIO
+from django.http import FileResponse
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+from .models import ProductAnalyse
+from reportlab.platypus.flowables import HRFlowable  # Ajoutez cette ligne d'importation
 
+
+
+def generate_pdf(request):
+    # Create a file-like buffer to receive PDF data.
+    buffer = BytesIO()
+
+    # Create the PDF object, using the buffer as its "file" and specifying the page size (e.g., letter).
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+
+    # Create a list to hold the content elements of the PDF.
+    elements = []
+    # Ajoutez l'en-tête au contenu.
+    now = datetime.now()
+    formatted_date = now.strftime("%Y-%m-%d")
+    elements.append(Paragraph(f"Date: {formatted_date}", getSampleStyleSheet()['Heading1']))
+
+    # Add a spacer for separation.
+    elements.append(HRFlowable(width="100%", thickness=1, color=colors.black))
+    # Add the date to the content.
+     # Add the company logo to the content.
+    logo_path = "static/images/logo.png"  # Replace with the path to your company's logo image.
+    logo = Image(logo_path, width=90, height=70)
+    elements.append(logo)
+
+    header_text = """
+    "OCP SA
+    Direction opérations industrielles
+    Direction site Jorf Lasfar
+    Laboratoire central"
+   
+   
+    """
+    header_style = getSampleStyleSheet()['Heading4']
+    elements.append(Paragraph(header_text, header_style))
+
+    # Ajoutez une ligne horizontale pour séparer la section du logo du reste du contenu.
+    elements.append(Spacer(1, 12))
+
+
+   
+
+    # Ajoutez une ligne horizontale pour séparer la section `analysis.location` du tableau.
+    elements.append(HRFlowable(width="100%", thickness=1, color=colors.black))
+
+
+    # Add the company name to the content.
+    elements.append(Paragraph(" Rapport d'essai ", getSampleStyleSheet()['Heading1']))
+
+   
+
+    # Fetch your analysis data from the database and format it into a list of lists for the table.
+    # Replace 'YourAnalysisModel' with your actual model name and customize the data retrieval.
+    analysis_data = ProductAnalyse.objects.all()
+  # Add the date to the content.
+    selected_date = request.POST.get('date')  # Récupérez la date sélectionnée depuis le formulaire.
+    elements.append(Paragraph(f"Date: {selected_date}", getSampleStyleSheet()['Heading1']))
+    
+    # Fetch your analysis data based on the selected date.
+    formatted_date = datetime.strptime(selected_date, "%Y-%m-%d")
+    analysis_data = ProductAnalyse.objects.filter(date_created=formatted_date)
+    
+    # Create the header row with field names.
+    header_row = [  "Location","Product Name", "Type de Produit", "Type d'Analyse", "Heure de Création", "Résultat"]
+    data = [header_row]
+
+    # Create rows with data.
+    for analysis in analysis_data:
+        row = [  analysis.location,analysis.product_name, analysis.type_produit, analysis.type_analyse,  analysis.date_created.strftime('%H:%M'),analysis.resultat]
+        data.append(row)
+
+    # Create the table and set its style.
+    table = Table(data, colWidths=[100, 100, 100, 100, 100]) 
+
+
+
+    
+    table_style = [
+    ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+    ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+    ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+    ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+    ('GRID', (0, 0), (-1, -1), 1, colors.black),
+      ]
+    
+    text_style = [
+    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+    ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+    ('BOTTOMPADDING', (0, 0), (-1, 0), 6),
+    ('BACKGROUND', (0, 1), (-1, -1), colors.white),
+      ]
+    # Appliquez les styles à la table.
+    table.setStyle(table_style)
+    table.setStyle(text_style)
+      
+    # Add the table to the content.
+    elements.append(table)
+
+    # Build the PDF document.
+    doc.build(elements)
+
+    # FileResponse sets the Content-Disposition header so that browsers
+    # present the option to save the file.
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename="analysis_report.pdf")
+
+
+
+# ****************************************************************
+
+def error_404(request , exception):
+     return (request , 'analysis/404.html')
+
+
+
+def error_500(request ):
+     return (request , 'analysis/500.html')
+
+def error_400(request  ,exception):
+     return (request , 'analysis/400.html')

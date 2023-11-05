@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fr)+by!k#*s7vp55j29!bkz2^b0u+!9t+-(=cc-a&37i2t3t2g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'analysis.apps.AnalysisConfig',
     'django_filters', 
+   
 ]
 
 MIDDLEWARE = [
