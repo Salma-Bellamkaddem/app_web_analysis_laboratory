@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fr)+by!k#*s7vp55j29!bkz2^b0u+!9t+-(=cc-a&37i2t3t2g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+# ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS=['127.0.0.1', '0.0.0.0']
 
 # Application definition
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'analysis.apps.AnalysisConfig',
-    'django_filters', 
+    'django_filters',
+   
    
 ]
 
