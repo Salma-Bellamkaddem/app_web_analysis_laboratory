@@ -30,6 +30,7 @@ Ce projet est une application web développée dans le cadre d’un stage de fin
 
 ### Fenêtre d'authentification
 ![Fenêtre d'authentification](images/fenetre_authentification.png)
+![create account](https://github.com/user-attachments/assets/5c6731f7-bbda-46e8-8cb8-aea67eb4b10d)
 
 ### Tableau de bord du chef de laboratoire
 ![Tableau de bord](images/tableau_bord_chef.png)
