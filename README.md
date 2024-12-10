@@ -30,7 +30,7 @@ Ce projet est une application web développée dans le cadre d’un stage de fin
 ## Captures d'écran
 
 ### Fenêtre d'authentification
-![Fenêtre d'authentification](images/fenetre_authentification.png)
+
 ![2REgister](https://github.com/user-attachments/assets/e4aa2ec6-8364-422f-8b4d-cd3648b21aae)
 ![3forgetpass](https://github.com/user-attachments/assets/7170fb17-47ed-4ea0-a5fe-d288478d1263)
 
@@ -39,43 +39,6 @@ Ce projet est une application web développée dans le cadre d’un stage de fin
 ### Tableau de bord du chef de laboratoire
 ![Tableau de bord]![4dashbord](https://github.com/user-attachments/assets/72594901-d0c7-40ef-952b-5ecfb7062e7d)
 
-
-### Gestion des échantillons
-![Gestion des échantillons](images/gestion_echantillons.png)
-
-### Rapport d'analyse
-![Rapport d'analyse]![rapport dessai](https://github.com/user-attachments/assets/98045e66-6012-460c-85b6-4547b6f40e45)
-nouveaux utilisateurs d'accéder à notre plateforme.
-![image](https://github.com/user-attachments/assets/f7eaf651-dd7f-461a-8bc8-0ff92371f33e)
-
-### Connexion
-
-Notre système de connexion sécurisé garantit que les utilisateurs enregistrés peuvent accéder rapidement à leur compte en saisissant leurs informations d'identification. Nous avons mis en œuvre des mécanismes de sécurité robustes pour protéger les données sensibles des utilisateurs.
-
-<img src="https://github.com/user-attachments/assets/054cbf6d-d907-4f18-a00c-c54c8ade252f" alt="Interface de connexion" width="500">
-
-
-L'envoi d'e-mails est intégré à plusieurs étapes de l'application, notamment pour la confirmation d'inscription, la réinitialisation de mot de passe et d'autres communications importantes avec les utilisateurs. Nous avons utilisé des protocoles sécurisés pour garantir que les e-mails sont livrés de manière fiable.
- 
-
-
-
-![image](https://github.com/user-attachments/assets/365f999e-3443-4423-9a0d-10af17c48715)
-
-
-
-
-
-En cas d'oubli de mot de passe, notre application propose une fonction de réinitialisation de mot de passe qui permet aux utilisateurs de créer un nouveau mot de passe en suivant un processus sécurisé. Cela garantit que les utilisateurs ne sont jamais bloqués hors de leur compte.
-
- 
-
- 
-
-
-
-
-![image](https://github.com/user-attachments/assets/84a27271-533d-4647-b335-91f172b5b6a4)
 
 
 
